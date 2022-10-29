@@ -37,6 +37,8 @@ extern u32 prepareForFirmlaunchSize;
 
 extern volatile Arm11Operation operation;
 
+private u8 consoleModel = 0;
+
 static void initScreens(u32 brightnessLevel, struct fb *fbs)
 {
     *(vu32 *)0x10141200 = 0x1007F;
@@ -198,7 +200,6 @@ static void deinitScreens(void)
 void main(void)
 {
    operation = ARM11_READY;
-	u8 consoleModel = 0;
    /*Result res = cfguInit();
    if (R_SUCCEEDED(res)) {
 	   CFGU_SecureInfoGetRegion(&sysRegion);
