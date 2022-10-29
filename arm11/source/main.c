@@ -35,7 +35,7 @@ static enum {
 	MODE_WIDE = 2,
 } gfxTopMode;
 
-#include "/opt/devkitpro/devkitarm/include/3ds/gfx.h"
+#include "/devkitpro/devkitarm/include/3ds/gfx.h"
 #include "types.h"
 #include "memory.h"
 
