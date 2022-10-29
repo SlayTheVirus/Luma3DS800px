@@ -29,16 +29,26 @@
 *   LCD deinit code by tiniVi
 */
 
+static enum {
+	MODE_2D   = 0,
+	MODE_3D   = 1,
+	MODE_WIDE = 2,
+} gfxTopMode;
+
 #include </Luma3DS800px/include/3ds/gfx.h>
 #include "types.h"
 #include "memory.h"
+
+
+void gfxSetWide(bool enable)
+{
+	gfxTopMode = enable ? MODE_WIDE : MODE_2D;
+}
 
 void prepareForFirmlaunch(void);
 extern u32 prepareForFirmlaunchSize;
 
 extern volatile Arm11Operation operation;
-
-static /*global?*/ u8 consoleModel = 0;
 
 static void initScreens(u32 brightnessLevel, struct fb *fbs)
 {
@@ -183,8 +193,6 @@ static void swapFramebuffers(bool isAlternate)
 
 static void updateBrightness(u32 brightnessLevel)
 {
-    consoleModel++; if (consoleModel >=5) consoleModel=0; //HACK: EVERYTIME BRIGHTNESS IS UPDATED THE CONSOLE MODEL GOES UP BY 1, UNTIL A LIMIT IS HIT 
-	//(for toggling 800px mode)
     //Change brightness
     *(vu32 *)0x10202240 = brightnessLevel;
     *(vu32 *)0x10202A40 = brightnessLevel;
@@ -201,16 +209,11 @@ static void deinitScreens(void)
 void main(void)
 {
    operation = ARM11_READY;
-   /*Result res = cfguInit();
-   if (R_SUCCEEDED(res)) {
-	   CFGU_SecureInfoGetRegion(&sysRegion);
-	   CFGU_GetSystemModel(&consoleModel);
-	   cfguExit();
-   }*/
+   
 
     while(true)
     {
-       gfxSetWide(consoleModel != 3);
+       gfx::gfxSetWide(true);
         switch(operation)
         {
             case ARM11_READY:
