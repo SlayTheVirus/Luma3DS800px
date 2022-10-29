@@ -35,7 +35,7 @@ static enum {
 	MODE_WIDE = 2,
 } gfxTopMode;
 
-#include </Luma3DS800px/include/3ds/gfx.h>
+#include <gfx.h>
 #include "types.h"
 #include "memory.h"
 
