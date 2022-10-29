@@ -37,7 +37,7 @@ extern u32 prepareForFirmlaunchSize;
 
 extern volatile Arm11Operation operation;
 
-private u8 consoleModel = 0;
+static /*global?*/ u8 consoleModel = 0;
 
 static void initScreens(u32 brightnessLevel, struct fb *fbs)
 {
