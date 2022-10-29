@@ -29,7 +29,7 @@
 *   LCD deinit code by tiniVi
 */
 
-#include </Luma3DS800px/include\/3ds/gfx.h>
+#include </Luma3DS800px/include/3ds/gfx.h>
 #include "types.h"
 #include "memory.h"
 
