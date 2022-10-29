@@ -213,7 +213,7 @@ void main(void)
 
     while(true)
     {
-       gfx::gfxSetWide(true);
+       gfxSetWide(true);
         switch(operation)
         {
             case ARM11_READY:
