@@ -29,6 +29,7 @@
 *   LCD deinit code by tiniVi
 */
 
+#include "gfx.h"
 #include "types.h"
 #include "memory.h"
 
