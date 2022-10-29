@@ -196,6 +196,7 @@ static void deinitScreens(void)
 void main(void)
 {
    operation = ARM11_READY;
+	u8 consoleModel = 0;
    Result res = cfguInit();
    if (R_SUCCEEDED(res)) {
 	   CFGU_SecureInfoGetRegion(&sysRegion);
