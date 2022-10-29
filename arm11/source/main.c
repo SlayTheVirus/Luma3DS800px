@@ -195,10 +195,17 @@ static void deinitScreens(void)
 
 void main(void)
 {
-    operation = ARM11_READY;
+   operation = ARM11_READY;
+   Result res = cfguInit();
+   if (R_SUCCEEDED(res)) {
+	   CFGU_SecureInfoGetRegion(&sysRegion);
+	   CFGU_GetSystemModel(&consoleModel);
+	   cfguExit();
+   }
 
     while(true)
     {
+       gfxSetWide(consoleModel != 3);
         switch(operation)
         {
             case ARM11_READY:
