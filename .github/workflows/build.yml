@@ -26,7 +26,7 @@ jobs:
       with:
         fetch-depth: 0
     - name: Add Safe Directory
-      run: git config --system --add safe.directory /__w/Luma3DS/Luma3DS
+      run: git config --global --add safe.directory /__w/Luma3DS/Luma3DS
     - name: Build
       run: make -j$(nproc --all)
     - uses: actions/upload-artifact@v3
